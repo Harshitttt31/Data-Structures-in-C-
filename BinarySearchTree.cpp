@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 class node
 {
@@ -23,70 +24,65 @@ public:
     node *root;
     BST()
     {
-        root = nullptr;
+        root = NULL;
     }
     void insert(int d)
     {
+        node *newNode = new node(d);
         if (root == NULL)
         {
-            root = new node(d);
+            root = newNode;
         }
         else
         {
-            node *ptr = root,*ptr1;
-            node *newNode = new node(d);
-            while ((ptr->left != nullptr) && (ptr->right != nullptr))
+            node *ptr = root;
+            while ((ptr->left != NULL) && (ptr->right != NULL))
             {
                 if (ptr->data > d)
                 {
                     ptr = ptr->left;
-                    ptr=ptr1;
                 }
                 else
                 {
                     ptr = ptr->right;
-                    ptr=ptr1;
                 }
             }
             if (ptr->data > d)
             {
-                ptr->left=newNode;
+                ptr->left = newNode;
             }
             else
             {
-                ptr->right=newNode;
+                ptr->right = newNode;
             }
         }
     }
     void Inorder(node *root)
     {
-        if (root != nullptr)
+        if (root != NULL)
         {
             Inorder(root->left);
             cout << root->data << "  ";
             Inorder(root->right);
         }
-        cout<<endl;
     }
     void Preorder(node *root)
     {
-        if (root != nullptr)
+        if (root != NULL)
         {
             cout << root->data << "  ";
             Inorder(root->left);
             Inorder(root->right);
         }
-        cout<<endl;
     }
     void Postorder(node *root)
     {
-        if (root != nullptr)
+        if (root != NULL)
         {
             Inorder(root->left);
             Inorder(root->right);
             cout << root->data << "  ";
         }
-        cout<<endl;
     }
 };
 int main()
@@ -94,6 +90,7 @@ int main()
     int choice, choice1;
     int num;
     BST tree;
+    string choice2;
     while (true)
     {
         cout << "What do you want to do:" << endl;
@@ -103,14 +100,18 @@ int main()
         cout << "4. Exit" << endl;
         cout << "Enter your Choice : ";
         cin >> choice;
-        cout << endl;
         switch (choice)
         {
         case 1:
-            cout << "Enter the number : ";
-            cin >> num;
-            cout << endl;
-            tree.insert(num);
+            choice2 = "yes";
+            while (choice2 != "no")
+            {
+                cout << "Enter the number : ";
+                cin >> num;
+                tree.insert(num);
+                cout << "Do want to enter more number(yes/no)" << endl;
+                cin >> choice2;
+            }
             break;
         case 2:
             cout << "Which type of traversal of want to do" << endl;
@@ -119,32 +120,36 @@ int main()
             cout << "3. Preorder Traversal" << endl;
             cout << "4. Postorder traversal" << endl;
             cout << "5. None" << endl;
-            cout<<"Enter the choice : ";
-            cin>>choice1;
-            cout<<endl;
+            cout << "Enter the choice : ";
+            cin >> choice1;
             switch (choice1)
             {
             case 1:
-
                 break;
             case 2:
+                cout << endl;
                 tree.Inorder(tree.root);
                 break;
+                cout << endl;
             case 3:
+                cout << endl;
                 tree.Preorder(tree.root);
                 break;
+                cout << endl;
             case 4:
+                cout << endl;
                 tree.Postorder(tree.root);
                 break;
+                cout << endl;
             case 5:
-                break;    
-            default: 
-            break;
+                break;
+            default:
+                break;
             }
         case 3:
             break;
         case 4:
-            cout<<"Thank for visiting my code!!!!!"<<endl;
+            cout << "Thank for visiting my code!!!!!" << endl;
             exit(0);
         default:
             break;
