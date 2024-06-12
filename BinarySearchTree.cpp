@@ -127,20 +127,17 @@ int main()
             case 1:
                 break;
             case 2:
-                cout << endl;
                 tree.Inorder(tree.root);
-                break;
                 cout << endl;
+                break;
             case 3:
-                cout << endl;
                 tree.Preorder(tree.root);
-                break;
                 cout << endl;
+                break;
             case 4:
-                cout << endl;
                 tree.Postorder(tree.root);
-                break;
                 cout << endl;
+                break;
             case 5:
                 break;
             default:
